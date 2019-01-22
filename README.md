@@ -20,53 +20,6 @@ website files for wendly.com
 - website files for wendly.com
 - Support i18n
 
-## Usage
-```bash
-Usage: express-ts-starter [options] [command]
-
-Options:
-  -h, --help  output usage information
-
-Commands:
-  start       Generate express application
-```
-
-## Sample
-
-```typescript
-// lib/routes/landing.ts
-// ======
-// package-dependency import *  from '@decorators/express';
-import { Controller, Get, Response } from '@decorators/express';
-
-@Controller('/')
-export class LandingController {
-  @Get('/')
-  landing(@Response() res: any) {
-    console.log();
-    res.serve('landing', {
-      greetings: res.__('greetings', { name: 'World' }),
-      welcome: res.__('welcome')
-    });
-  }
-}
-
-// index.ts 
-// ========
-import { LandingController } from './lib/routes/landing';
-import { BaseApplicationServer } from 'express-starter-config';
-
-class ApplicationServer extends BaseApplicationServer {
-  constructor() {
-    super();
-    this.addControllers(LandingController);
-  }
-}
-
-// Start the application
-new ApplicationServer().start();
-```
-
 ## Install
 
 ```bash
@@ -78,7 +31,7 @@ npm install --save wendly-home
  - **npm run build** : `rm -rf dist && tsc && npm run readme`
  - **npm run build:minify** : `node dist/lib/minify.js --css --js --debug`
  - **npm run dev** : `npm run build && node dist/index.js --instance dev --debug`
- - **npm run prod** : `npm run build && node dist/index.js --instance prod --port 2435`
+ - **npm run prod** : `npm run build && node dist/index.js --instance prod`
  - **npm run readme** : `node ./node_modules/.bin/node-readme`
  - **npm run test** : `mocha ./dist/test/*.js`
 
